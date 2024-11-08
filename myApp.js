@@ -5,6 +5,16 @@ const mongoose = require('mongoose');
 // https://www.freecodecamp.org/news/get-started-with-mongodb-atlas/
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
+// Create a Model
+const Schema = mongoose.Schema
+
+const personSchema = new Schema({
+    name: { type: String, required: true },
+    age: Number,
+    favoriteFoods: [String]
+})
+
+let Person = mongoose.model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
     done(null /*, data*/);
