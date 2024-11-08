@@ -21,13 +21,18 @@ const createAndSavePerson = (done) => {
     let dogukanPerson = new Person({ name: 'Dogukan', age: 26, favoriteFoods: ['Sushi', 'Burger'] });
 
     dogukanPerson.save((err, data) => {
-        if(err) return console.error(err);
+        if (err) return console.error(err);
         done(null, data);
     })
 };
 
+
+// Create Many Records with model.create()
 const createManyPeople = (arrayOfPeople, done) => {
-    done(null /*, data*/);
+    Person.create(arrayOfPeople, (err, data) => {
+        if (err) return console.error(err);
+        done(null, data);
+    })
 };
 
 const findPeopleByName = (personName, done) => {
